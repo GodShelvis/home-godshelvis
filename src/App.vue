@@ -54,6 +54,9 @@
           <v-col md="8" style="padding: 0">
             <shortcut-area :iconDatas="iconData2" :md="3" :marginB="this.clientHeight*0.05" style="margin: 0 0 0 0"></shortcut-area>
           </v-col>
+          <v-col md="12" style="padding: 0;height: 0px">
+            <a href="http://www.beian.miit.gov.cn" style="margin: 10px 9.5% 0 0;color: #333;float: right">备案号</a>
+          </v-col>
         </v-row>
       </div>
     </div>
