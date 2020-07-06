@@ -59,6 +59,11 @@
           </v-col>
         </v-row>
       </div>
+      <video-player  class="video-player-box"
+        ref="videoPlayer"
+        :options="playerOptions"
+        :playsinline="true">
+      </video-player>
     </div>
   </v-app>
 </template>
@@ -67,11 +72,15 @@
 import SearchArea from './components/search-area'
 import ShortcutArea from './components/shortcut-area'
 
+import 'video.js/dist/video-js.css'
+import { videoPlayer } from 'vue-video-player'
+
 export default {
   name: 'App',
   components: {
     'search-area': SearchArea,
     'shortcut-area': ShortcutArea,
+    videoPlayer
   },
   data(){
     return{
@@ -169,6 +178,26 @@ export default {
           url: 'https://www.youdao.com'
         },
       ],
+      playerOptions: {
+        autoplay: true, // 自动播放
+        controls: true, // 是否显示控制栏
+        techOrder: ['html5'], // 兼容顺序
+        sourceOrder: true, // 
+        html5: { hls: { withCredentials: false } },
+        sources: [{
+          withCredentials: false,
+          type: 'application/x-mpegURL',
+          src: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8'
+        }],
+        poster: "", // 播放器默认图片
+        // controlBar: { // 配置控制栏
+        //   timeDivider: false, // 时间分割线
+        //   durationDisplay: false, // 总时间
+        //   progressControl: true, // 进度条
+        //   customControlSpacer: true, // 未知
+        //   fullscreenToggle: true // 全屏
+        // },
+      }
     }
   },
   methods: {
